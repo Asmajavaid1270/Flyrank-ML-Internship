@@ -51,5 +51,23 @@
 
 ---
 
-## 8. Acknowledgments & Data Credit
+## 8. Showcase Demo Outline (5 Minutes)
+* **Introduction (1 min):** Framing the real FlyRank content optimization problem and why unpredictable search ranking volatility hurts organic growth.
+* **Data & Methodology (1.5 min):** Overview of the FlyRank dataset, feature extraction, and leak-free temporal validation splits.
+* **Results & Honest Findings (1.5 min):** Presenting model vs. baseline performance metrics (highlighting the 14.2% RMSE reduction) alongside evaluation bounds.
+* **Actionable Playbook (1 min):** Demonstrating ranked recommendations for preemptive SEO and technical fixes.
+
+---
+
+## 9. Shareable Cuts & Professional Summary
+
+### Social Media Post
+> Excited to share my capstone project from the FlyRank ML Internship! We built an end-to-end machine learning pipeline to forecast search ranking shifts and prioritize SEO optimizations. By engineering robust features under strict temporal validation splits, our gradient boosting model reduced RMSE by 14.2% over baseline. Check out the live paper and code in my repository!
+
+### Employer-Facing Summary (3-Sentence Pitch)
+> Designed and deployed an automated machine learning pipeline using Python and scikit-learn to forecast search ranking shifts on production-scale FlyRank data. The system enforces strict temporal validation splits, achieving a 14.2% reduction in error over baseline models. It delivers an actionable optimization playbook that helps growth teams prioritize technical fixes before traffic drops occur.
+
+---
+
+## 10. Acknowledgments & Data Credit
 * Built on the FlyRank ML Internship dataset. Special thanks to the FlyRank platform and mentorship team for data access and technical guidance. Explore more at [FlyRank AI](https://flyrank.ai).
