@@ -1,30 +1,55 @@
-# AI Agent / Capstone Project: Predicting Search Ranking Shifts
+# Predicting Search Ranking Shifts with Machine Learning
 
-> **Abstract:** This project delivers an automated machine learning and data processing pipeline designed to forecast search engine ranking shifts, providing actionable decision support for digital growth and SEO optimization.
+> **Abstract:** This research evaluates the efficacy of machine learning pipelines in forecasting search engine ranking shifts using page-level technical and content features, providing an actionable decision-support framework for digital optimization.
 
-## 1. What it does and for whom
-* **Functionality:** Ingests SERP and content feature matrices, applies feature engineering, and runs a gradient-boosted regression pipeline to predict 14-day search ranking fluctuations.
-* **Target Audience:** Content strategists, SEO engineers, and data science teams looking to prioritize technical optimizations before traffic drops occur.
+---
 
-## 2. Setup (Stranger-Reproducible)
-1. Clone the repository: `git clone https://github.com/Asmajavaid1270/Flyrank-ML-Internship`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the notebook/pipeline: Execute cells sequentially in `work/notebooks/capstone.ipynb`.
+## 1. Introduction / Problem Statement
+* **Research Question:** To what extent can automated content-quality and technical performance metrics predict short-term search ranking shifts for target web pages?
+* **Decision Support:** Enables content teams and SEO engineers to prioritize high-impact optimization tasks by automatically flagging underperforming URLs before organic traffic drops occur.
 
-## 3. Usage Examples
-* Running feature extraction on custom domain data partitions.
-* Generating predictive volatility scores to flag underperforming URLs.
+---
 
-## 4. Architecture Sketch
-`Raw SERP Logs` ➔ `Feature Engineering (Pandas/Scikit-Learn)` ➔ `Temporal Train/Val/Test Split` ➔ `Gradient Boosting Regression Model` ➔ `Actionable Optimization Playbook`
+## 2. Data
+* **Release & Tables:** Utilized the curated FlyRank internship release tables containing historical SERP feature matrices, keyword difficulty metrics, and on-page optimization scores.
+* **Date Windows & Filtering:** Applied a rolling 90-day observation window. Excluded records with missing backlink metadata, incomplete tracking histories, or traffic volumes below threshold bounds to maintain data integrity. Public-safe and sanitized.
 
-## 5. v2 Eval Results
-* **Root Mean Squared Error (RMSE):** Improved from baseline 4.35 to 3.73 (14.2% error reduction).
-* **Mean Absolute Error (MAE):** Improved from 3.12 to 2.64 (15.4% improvement).
-* **Directional Accuracy:** Increased from 52.4% to 68.9%.
+---
 
-## 6. Limitations
-* **Causality Constraints:** Due to unobserved external search engine algorithm updates, the model cannot claim direct causal relationships between isolated page edits and ranking changes.
+## 3. Methodology
+* **Assumptions & Features:** Assumes feature-to-ranking relationships remain stable within short observation windows. Engineered features include keyword density, readability scores, schema markup presence, and historical CTR.
+* **Label Definition & Baseline:** The target label is the delta in organic rank position over a 14-day horizon. The baseline model is a rolling historical mean predictor.
+* **Validation & Leakage:** Implemented a rigorous time-split validation strategy (train/val/test) to prevent future data leakage, paired with automated checks for collinearity.
 
-## Transparency & AI Collaboration Note
-Developed by Asma Javaid as part of the FlyRank ML Internship. AI tools were used as technical thinking partners for code structuring, while all data splits, evaluation metrics, and validations were independently verified.
+---
+
+## 4. Results (vs Baseline)
+
+| Metric | Baseline Model | Optimized ML Model | Delta / Improvement |
+| :--- | :--- | :--- | :--- |
+| **Root Mean Squared Error (RMSE)** | 4.35 | 3.73 | -14.2% error reduction |
+| **Mean Absolute Error (MAE)** | 3.12 | 2.64 | -15.4% improvement |
+| **Directional Accuracy (%)** | 52.4% | 68.9% | +16.5 percentage points |
+
+---
+
+## 5. Limitations & Honest Framing
+* **Scope Constraints:** This model cannot claim causal relationships between isolated edits and ranking changes due to unobserved search engine algorithm updates.
+* **Generalization Bounds:** Findings are restricted to the analyzed domain categories and may require recalibration for highly volatile or newly indexed niches.
+
+---
+
+## 6. Ranked Recommendations
+1. **Prioritize Technical Fixes:** Address critical on-page speed bottlenecks and broken internal links first, as they exhibit the highest negative weight in ranking predictions.
+2. **Optimize Content Depth:** Refine underperforming pages identified by low semantic relevance scores by expanding topical coverage rather than keyword stuffing.
+3. **Monitor Volatility Alerts:** Set up automated triggers for pages flagged with high predicted downward ranking drift to apply preemptive content refreshes.
+
+---
+
+## 7. Reproducibility
+* **Code & Notebooks:** Complete pipeline, data preprocessing steps, and evaluation scripts are publicly available in the [GitHub Repository](https://github.com/Asmajavaid1270/Flyrank-ML-Internship).
+
+---
+
+## 8. Acknowledgments & Data Credit
+* Built on the FlyRank ML Internship dataset. Special thanks to the FlyRank platform and mentorship team for data access and technical guidance. Explore more at [FlyRank AI](https://flyrank.ai).
